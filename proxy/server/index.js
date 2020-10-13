@@ -15,28 +15,28 @@ app.use(express.static(path.join(__dirname, '/../public')));
 
 // Bookings
 app.get('/:restaurantId', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3000/${reqProxy.params.restaurantId}`)
+  axios.get(`http://13.57.11.216/${reqProxy.params.restaurantId}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
 });
 
 app.get('/api/bookings/restaurantName/:restaurantId', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3000/api/bookings/restaurantName/${reqProxy.params.restaurantId}`)
+  axios.get(`http://13.57.11.216/api/bookings/restaurantName/${reqProxy.params.restaurantId}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
 });
 
 app.get('/api/bookings/:restaurantId', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3000/api/bookings/${reqProxy.params.restaurantId}`)
+  axios.get(`http://13.57.11.216/api/bookings/${reqProxy.params.restaurantId}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
 });
 
 app.post('/api/bookings/:restaurantId', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3000/api/bookings/${reqProxy.params.restaurantId}`, {
+  axios.get(`http://13.57.11.216/api/bookings/${reqProxy.params.restaurantId}`, {
     params: reqProxy.query
   })
     .then((response) => {
@@ -47,7 +47,7 @@ app.post('/api/bookings/:restaurantId', (reqProxy, resProxy) => {
 //Photos
 
 app.get('/api/restaurants/photos/:id', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3003/api/restaurants/photos/${reqProxy.params.id}`)
+  axios.get(`http://34.201.104.34/api/restaurants/photos/${reqProxy.params.id}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
@@ -55,7 +55,7 @@ app.get('/api/restaurants/photos/:id', (reqProxy, resProxy) => {
 
 //Popular Dishes
 app.get('/api/dishes/restaurant/:id', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3001/api/dishes/restaurant/${reqProxy.params.id}`)
+  axios.get(`http://54.67.110.162/api/dishes/restaurant/${reqProxy.params.id}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
@@ -63,14 +63,14 @@ app.get('/api/dishes/restaurant/:id', (reqProxy, resProxy) => {
 
 //Reviews
 app.get('/api/restaurants/:id', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3002/api/restaurants/${reqProxy.params.id}`)
+  axios.get(`http://3.101.36.32/api/restaurants/${reqProxy.params.id}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
 });
 
 app.get('/api/review_list/:id', (reqProxy, resProxy) => {
-  axios.get(`http://localhost:3002/api/review_list/${reqProxy.params.id}`)
+  axios.get(`http://3.101.36.32/api/review_list/${reqProxy.params.id}`)
     .then((response) => {
       resProxy.status(200).send(response.data)
     });
@@ -78,5 +78,5 @@ app.get('/api/review_list/:id', (reqProxy, resProxy) => {
 
 
 app.listen(port, () => {
-  console.log(`server running on http://localhost:${port}`);
+  console.log(`server running on public container port 80 mapped to server port ${port}`);
 });

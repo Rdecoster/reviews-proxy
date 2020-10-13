@@ -1,0 +1,51 @@
+services:
+  proxy:
+    container_name: proxy
+    restart: always
+    build: ./proxy
+    ports:
+      - "3004:3004"
+    links:
+      - mysql
+  gallery:
+    container_name: gallery
+    restart: always
+    build: ./photos-carousel-service
+    ports:
+      - "3003:3003"
+    links:
+      - mongo
+  booking:
+    container_name: booking
+    restart: always
+    build: ./bookings-service
+    ports:
+      - "3000:3000"
+    links:
+      - mysql
+  reviews:
+    container_name: reviews
+    restart: always
+    build: ./reviews-service
+    ports:
+      - "3002:3002"
+    links:
+      - mysql
+  dishes:
+    container_name: dishes
+    restart: always
+    build: ./popular-dishes-service
+    ports:
+      - "3001:3001"
+    links:
+      - mysql
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27018:27017"
+  mysql:
+    container_name: mysql
+    image: mysql
+    ports:
+      - "3306:3306"
